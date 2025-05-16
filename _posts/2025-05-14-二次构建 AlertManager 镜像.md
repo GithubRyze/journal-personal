@@ -1,7 +1,7 @@
 ---
 title: 二次构建 AlertManager 镜像
 author: 刘Sir
-date: 2024-05-014 10:10:00 +0800
+date: 2024-05-14 10:10:00 +0800
 categories: [技术]
 tags: [容器]
 render_with_liquid: false
