@@ -121,6 +121,6 @@ spec:
       -----END PRIVATE KEY-----
 ```
 测试：
-openssl  s_client --connect his-uat2-web-sr-integrate.uat.cmhhk.org.hk:443 --showcerts
-curl -k https://his-uat2-web-sr-integrate.uat.cmhhk.org.hk:443/servicer/user_login
+openssl  s_client --connect his-uat2-web-sr-integrate.uat.cmhhk.org.hk:443 --showcerts  
+curl -k https://his-uat2-web-sr-integrate.uat.cmhhk.org.hk:443/servicer/user_login  
 curl --resolve his-uat2-web-integrate.uat.cmhhk.org.hk:443:10.27.224.6 -k https://his-uat2-web-integrate.uat.cmhhk.org.hk:443/user_login
