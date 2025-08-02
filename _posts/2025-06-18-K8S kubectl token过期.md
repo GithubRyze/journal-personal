@@ -1,7 +1,7 @@
 ---
 title: K8S kubectl token 过期
 author: 刘Sir
-date: 2024-06-18 10:10:00 +0800
+date: 2025-06-18 10:10:00 +0800
 categories: [技术]
 tags: [容器]
 render_with_liquid: false

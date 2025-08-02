@@ -1,7 +1,7 @@
 ---
 title: openshift route
 author: 刘Sir
-date: 2024-03-14 10:10:00 +0800
+date: 2025-03-14 10:10:00 +0800
 categories: [技术]
 tags: [K8S]
 render_with_liquid: false

@@ -1,7 +1,7 @@
 ---
 title: RedHat podman使用记无法访问外网
 author: 刘Sir
-date: 2024-03-07 10:10:00 +0800
+date: 2025-03-07 10:10:00 +0800
 categories: [技术]
 tags: [容器]
 render_with_liquid: false
