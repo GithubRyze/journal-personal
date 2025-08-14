@@ -1,0 +1,90 @@
+---
+title: 面试训练-逻辑题
+author: 刘Sir
+date: 2025-08-12 10:10:00 +0800
+categories: [生活]
+tags: [随记]
+render_with_liquid: false
+---
+
+# 第 1 题：药丸称重问题
+你有 20 瓶药丸，每瓶药丸本应每颗重 1 克，但其中有 1 瓶药丸是次品，每颗重 0.9 克。
+你有一个非常精准的电子秤，但只能使用一次。
+请问如何确定哪一瓶是次品？
+
+1. 从第 1 瓶取 1 粒，从第 2 瓶取 2 粒，……从第 20 瓶取 20 粒。总共取 
+2. 把这 210 粒一次性放在电子秤上称重量（只允许称一次）。
+3. 理论上如果全是正品（每粒 1.0 g），总重应为 210.0 g。假如第 
+4. 观察称得的偏差（210.0 减去实际重量），把偏差除以 0.1 就得到 
+
+# Day 1 – 基础热身：数组 & 哈希
+1. 两数之和（Two Sum） – LeetCode 1
+给定一个数组和值，找出数组中两个数的和等于值的下标
+- hash 标记访问过的数组，值 - 索引
+- 利用值和当前元素差，看差是否在 hash 中
+```
+func getSum(nums []int, val int) (idx1, idx2 int) {
+	record := make(map[int]int)
+	for i := 0; i < len(nums); i++ {
+		sub := val - nums[i]
+		v, ok := record[sub]
+		if ok {
+			return v, i
+		}
+		record[nums[i]] = i
+	}
+	return -1, -1
+}
+```
+2. 给定一个整数数组 nums 和一个整数 k，找出数组中 连续子数组 的最大和，子数组长度必须是 k。
+滑动窗口的思想解法
+- 先求出窗口的和
+- 再循环移动窗口，动态计算新的和 （旧和减去窗口移动中丢弃的元素值，加上窗口移动中新增的元素值）
+- 判断新和如果大于旧和，就去新的和
+```
+func findMaxSum(nums []int, k int) int {
+    // 先求出 val 长度窗口的和
+	subArray := nums[0:val]
+	winSum := 0
+	for i := 0; i < len(subArray); i++ {
+		winSum = winSum + subArray[i]
+	}
+	// 从窗口数组尾开始滑动，也可以从窗口数组头滑动
+	// 滑动后，需要减去最丢弃的元素，加上新增元素
+	for i := val; i < len(nums); i++ {
+		newWinSum := winSum - nums[i-val] + nums[i]
+		if newWinSum > winSum {
+			winSum = newWinSum
+		}
+	}
+	return winSum
+}
+
+```
+
+3. 最长不含重复字符的子串长度。给定字符串 s，返回其最长不含重复字符的子串长度。示例："abcabcbb" -> 3（"abc"）。
+- 用 start 记录当前无重复子串的起点
+- 用 map 记录每个字符最后一次出现的位置
+- 遇到重复字符时，把 start 移到该重复字符的上一次出现位置的后一个位 (重新设置窗口，因为前面的已经计算过了)
+- 不断更新最大长度 maxLen
+
+```
+
+func findNoRepeatString(strs string) int {
+	lastIndex := make(map[rune]int)
+	start := 0
+	maxLen := 0
+	runes := []rune(strs)
+
+	for i, ch := range runes {
+		if idx, ok := lastIndex[ch]; ok && idx >= start {
+			start = idx + 1
+		}
+		lastIndex[ch] = i
+		if i-start+1 > maxLen {
+			maxLen = i - start + 1
+		}
+	}
+	return maxLen
+}
+```
